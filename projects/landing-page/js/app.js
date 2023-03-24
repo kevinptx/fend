@@ -44,6 +44,8 @@ const toTopButton = document.getElementById('to-top-button');
 */
 
 Source: https://knowledge.udacity.com/questions/85408
+// check if element is in viewport
+
 function isSectionElementInViewport(section) {
   const rect = section.getBoundingClientRect();
   return (
@@ -52,8 +54,7 @@ function isSectionElementInViewport(section) {
     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
-};
-
+}
 
 //IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
 //Source: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
@@ -78,8 +79,13 @@ function toggleActiveClass(section) {
   sections.forEach((section) => {
     if (isSectionElementInViewport(section)) {
       section.classList.add('your-active-class');
+      highlightNavLinks(section);
+      const navLink = navbarList.querySelector(`a[href="#${section.id}"]`);
+      navLink.classList.add('active');
     } else {
       section.classList.remove('your-active-class');
+      const navLink = navbarList.querySelector(`a[href="#${section.id}"]`);
+      navLink.classList.remove('active');
     }
   });
 }
@@ -163,6 +169,8 @@ navbarList.addEventListener('click', scrollToSection);
 
 // Set sections as active
 document.addEventListener('scroll', setActiveSection);
+navbarList.firstElementChild.firstElementChild.classList.add('active');
+
 
 // Button functionality: 
 // Show/hide the to-top button depending on the scroll position

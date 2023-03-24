@@ -8,6 +8,28 @@
  *
 */
 
+/* Below is the CSS that I have added to achieve the styling requirements 
+ * based on the active/inactive state of what is currently displayed in the viewport
+ * I have included a thick border to highlight the active state and 
+ * make it obvious which section is in the viewport:
+*/
+
+/* Active section */
+section.your-active-class {
+    background-color: #f5f5f5;
+    border-style: solid;
+    border-color: red;
+    border-width: thick;
+}
+
+/* Active navigation link */
+.navbar__menu .active {
+    color: red;
+    border-style: solid;
+    border-color: red;
+    border-width: thick;
+}
+
 /* ---- Button Added to Bottom ---- */
 #to-top-button {
     position: fixed;
@@ -17,6 +39,7 @@
     /* hide the button by default */
 }
 
+/* End of my CSS additions. Minor edits are below in .navbar__menu ul, .navbar__menu .menu__link, and .page__footer for responsive design purposes: */
 
 /* ---- Base Rules ---- */
 body {
