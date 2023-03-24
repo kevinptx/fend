@@ -40,6 +40,16 @@ landing-page/
 ## Usage
 
 This landing page can be used as a general template for a variety of purposes. 
+The navigation menu is dynamically constructed based on the number of sections in the HTML file. Clicking on a navigation menu item will smoothly scroll to the corresponding section on the page. The currently active section in the viewport will be highlighted in both the navigation menu and on the page. Additionally, a "To Top" button will appear when the user scrolls down the page, allowing them to quickly return to the top of the page. 
+
+This script provides the following features:
+
+- Dynamically builds a navigation menu based on the sections in the document.
+- Scrolls to the appropriate section when a navigation link is clicked.
+- Highlights the current section in the navigation menu as the user scrolls through the page.
+- Shows/hides a "to top" button depending on the user's scroll position, and scrolls to the top of the page when the button is clicked.
+
+To use this script in your project, simply include the JavaScript file and initialize the NavigationMenu object. You can customize the appearance and behavior of the menu by modifying the CSS styles and the configuration options in the JavaScript file.
 
 ## Credits
 

@@ -43,19 +43,19 @@ const toTopButton = document.getElementById('to-top-button');
  * 
 */
 
-// Source: https://knowledge.udacity.com/questions/85408
-// function isSectionElementInViewport(sec) {
-//   const rect = sec.getBoundingClientRect();
-//   return (
-//     sec.top >= 0 &&
-//     sec.left >= 0 &&
-//     sec.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//     sec.right <= (window.innerWidth || document.documentElement.clientWidth)
-//   );
-// };
+Source: https://knowledge.udacity.com/questions/85408
+function isSectionElementInViewport(section) {
+  const rect = section.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
 
-// Replaced isSectionElementInViewport() with IntersectionObserver()
-// IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
+
+//IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
 //Source: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
 //Source: https://knowledge.udacity.com/questions/667155, 
 const observer = new IntersectionObserver(function (entries) {
@@ -75,29 +75,25 @@ function toggleActiveClass(section) {
   }
 
   // Remove active class from all sections and their corresponding nav items
-  function toggleActiveClass(section) {
-    if (!section) {
-      return;
-    }
-
-    // Remove active class from all sections and their corresponding nav items
-    sections.forEach((section) => {
+  sections.forEach((section) => {
+    if (isSectionElementInViewport(section)) {
+      section.classList.add('your-active-class');
+    } else {
       section.classList.remove('your-active-class');
-      const navItem = document.querySelector(`a[href="#${section.id}"]`);
-      if (navItem) {
-        navItem.classList.remove('active');
-      }
-    });
-
-    // Add active class to the section and its corresponding nav item
-    section.classList.add('your-active-class');
-    const navItem = document.querySelector(`a[href="#${section.id}"]`);
-    console.log(navItem);
-    if (navItem) {
-      navItem.classList.add('active');
     }
-  }
+  });
 }
+
+function highlightNavLinks(section) {
+  navbarList.querySelectorAll('a').forEach((a) => {
+    if (a.getAttribute('href') === `#${section.id}`) {
+      a.classList.add('active');
+    } else {
+      a.classList.remove('active');
+    }
+  });
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -117,31 +113,40 @@ function buildNavbar() {
     fragment.appendChild(li);
   });
   navbarList.appendChild(fragment);
-}
+};
 
 //Scroll to anchor ID using scrollTO event
 // Scroll to the clicked section smoothly
 //Source: https://knowledge.udacity.com/questions/72618
 //Source: https://knowledge.udacity.com/questions/147927
+//Scroll to anchor ID using scrollTO event
 function scrollToSection(event) {
   event.preventDefault();
   if (event.target.nodeName === 'A') {
-    // Get the id of the section to scroll to from the href attribute of the clicked navigation item
+    //  Get the id of the section to scroll to from the href attribute of the clicked link
     const targetId = event.target.getAttribute('href');
+    // Use the id to get the target section element
     const targetSection = document.querySelector(targetId);
-    targetSection.scrollIntoView({ behavior: 'smooth' });
+    // Calculate the distance from the top of the page to the target section
+    const distance = targetSection.getBoundingClientRect().top + window.pageYOffset;
+    // Scroll smoothly to the target section
+    window.scroll({
+      top: distance,
+      behavior: 'smooth'
+    });
   }
 }
 
-// Add the 'your-active-class' and 'active' classes to the section 
+//Add the 'your-active-class' and 'active' classes to the section 
 //and the corresponding navigation item when the section is in the viewport
-// function setActiveSection() {
-//   sections.forEach((section) => {
-//     if (isSectionElementInViewport(section)) {
-//       toggleActiveClass(section);
-//     }
-//   });
-// }
+function setActiveSection() {
+  sections.forEach((section) => {
+    if (isSectionElementInViewport(section)) {
+      toggleActiveClass(section);
+      highlightNavLinks(section);
+    }
+  });
+}
 
 
 /**
@@ -157,7 +162,7 @@ buildNavbar();
 navbarList.addEventListener('click', scrollToSection);
 
 // Set sections as active
-document.addEventListener('scroll', toggleActiveClass);
+document.addEventListener('scroll', setActiveSection);
 
 // Button functionality: 
 // Show/hide the to-top button depending on the scroll position
