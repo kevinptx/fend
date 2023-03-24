@@ -58,7 +58,7 @@ function isSectionElementInViewport(section) {
 
 //IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
 //Reference: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
-//Reference: https://knowledge.udacity.com/questions/667155, 
+//Reference: https://knowledge.udacity.com/questions/667155
 const observer = new IntersectionObserver(function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
