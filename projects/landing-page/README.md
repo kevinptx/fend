@@ -37,7 +37,8 @@ landing-page/
 ├── css/
 │   └── styles.css
 └── js/
-    └── app.js```
+    └── app.js
+```
 
 - `README.md`: Contains the documentation for the project
 - `index.html`: Contains the HTML structure of the landing page
