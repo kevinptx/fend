@@ -43,7 +43,7 @@ const toTopButton = document.getElementById('to-top-button');
  * 
 */
 
-Reference: https://knowledge.udacity.com/questions/85408
+//Reference: https://knowledge.udacity.com/questions/85408
 // check if element is in viewport
 
 function isSectionElementInViewport(section) {
