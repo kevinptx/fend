@@ -90,6 +90,9 @@ function toggleActiveClass(section) {
   });
 }
 
+// This function highlights the active navigation link by adding the "active" class to it, 
+//and removes the "active" class from all other navigation links. 
+//The active link corresponds to the section with the given ID.
 function highlightNavLinks(section) {
   navbarList.querySelectorAll('a').forEach((a) => {
     if (a.getAttribute('href') === `#${section.id}`) {
