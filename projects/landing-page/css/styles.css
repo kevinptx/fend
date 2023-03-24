@@ -118,7 +118,7 @@ section {
 
 /* Footer Styles */
 .page__footer {
-    /* Make footer centered: */
+    /* Center footer: */
     text-align: center;
     background: #000;
     padding: 3em;
