@@ -70,7 +70,6 @@ sections.forEach(section => observer.observe(section));
 
 //Toggles to add/remove active class from section and its corresponding nav item
 function toggleActiveClass(section) {
-  //console.log(section); 
   if (!section) {
     return;
   }
@@ -85,7 +84,6 @@ function toggleActiveClass(section) {
     sections.forEach((section) => {
       section.classList.remove('your-active-class');
       const navItem = document.querySelector(`a[href="#${section.id}"]`);
-      //console.log(navItem);
       if (navItem) {
         navItem.classList.remove('active');
       }
