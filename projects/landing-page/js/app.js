@@ -55,7 +55,7 @@ const toTopButton = document.getElementById('to-top-button');
 // };
 
 // Replaced isSectionElementInViewport() with IntersectionObserver()
-// Use IntersectionObserver to toggle the 'your-active-class' and 'active' classes on sections and their corresponding nav items
+// IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
 //Source: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
 //Source: https://knowledge.udacity.com/questions/667155, 
 const observer = new IntersectionObserver(function (entries) {
