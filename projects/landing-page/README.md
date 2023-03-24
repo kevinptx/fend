@@ -1,6 +1,6 @@
 # Landing Page Project
 
-Landing Page Project for Udacity's Front End Developer Nanodegree
+Landing Page Project for Udacity's [Front End Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 ## Table of Contents
 
