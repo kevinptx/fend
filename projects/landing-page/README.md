@@ -26,11 +26,6 @@ This project requires the following dependencies:
 
 To get started, clone the project to your local machine and open the `index.html` file in your browser. You can also view a live demo [here]().
 
-To modify the landing page, you can edit the following files:
-- `index.html`: Contains the HTML structure of the landing page
-- `styles.css`: Contains the CSS styles for the landing page
-- `app.js`: Contains the JavaScript code that dynamically creates the navigation menu, scrolls to the appropriate section, and highlights the section and corresponding link when in view.
-
 ## Project Structure
 
 The project contains the following files and folders:
@@ -42,12 +37,12 @@ landing-page/
 ├── css/
 │   └── styles.css
 └── js/
-    └── app.js
+    └── app.js```
 
-README.md: Contains the documentation for the project
-index.html: Contains the HTML structure of the landing page
-css/: Contains the CSS styles for the landing page
-js/: Contains the JavaScript code that dynamically creates the navigation menu, scrolls to the appropriate section, and highlights the section and corresponding link when in view.
+- `README.md`: Contains the documentation for the project
+- `index.html`: Contains the HTML structure of the landing page
+- `css/`: Contains the CSS styles for the landing page
+- `js/`: Contains the JavaScript code that dynamically creates the navigation menu, scrolls to the appropriate section, and highlights the section and corresponding link when in view.
 
 ## Usage
 
