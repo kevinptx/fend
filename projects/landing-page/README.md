@@ -16,7 +16,7 @@ This project is a simple landing page that demonstrates the use of JavaScript to
 
 ## Instructions
 
-To get started, clone the project to your local machine and open the `index.html` file in your browser. You can also view a live demo [here]().
+To get started, clone the project to your local machine and open the `index.html` file in your browser.
 
 ## Project Structure
 
