@@ -43,7 +43,7 @@ const toTopButton = document.getElementById('to-top-button');
  * 
 */
 
-Source: https://knowledge.udacity.com/questions/85408
+Reference: https://knowledge.udacity.com/questions/85408
 // check if element is in viewport
 
 function isSectionElementInViewport(section) {
@@ -57,8 +57,8 @@ function isSectionElementInViewport(section) {
 }
 
 //IntersectionObserver toggles the 'your-active-class' and 'active' classes on sections and their corresponding nav items
-//Source: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
-//Source: https://knowledge.udacity.com/questions/667155, 
+//Reference: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
+//Reference: https://knowledge.udacity.com/questions/667155, 
 const observer = new IntersectionObserver(function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -93,6 +93,7 @@ function toggleActiveClass(section) {
 // This function highlights the active navigation link by adding the "active" class to it, 
 //and removes the "active" class from all other navigation links. 
 //The active link corresponds to the section with the given ID.
+//Reference: https://stackoverflow.com/questions/38990163/how-can-i-add-and-remove-an-active-class-to-an-element-in-pure-javascript
 function highlightNavLinks(section) {
   navbarList.querySelectorAll('a').forEach((a) => {
     if (a.getAttribute('href') === `#${section.id}`) {
@@ -126,8 +127,8 @@ function buildNavbar() {
 
 //Scroll to anchor ID using scrollTO event
 // Scroll to the clicked section smoothly
-//Source: https://knowledge.udacity.com/questions/72618
-//Source: https://knowledge.udacity.com/questions/147927
+//Reference: https://knowledge.udacity.com/questions/72618
+//Reference: https://knowledge.udacity.com/questions/147927
 //Scroll to anchor ID using scrollTO event
 function scrollToSection(event) {
   event.preventDefault();
