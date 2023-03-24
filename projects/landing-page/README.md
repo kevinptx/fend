@@ -5,7 +5,6 @@ Landing Page Project for Udacity's [Front End Developer Nanodegree](https://www.
 ## Table of Contents
 
 * [Description](#description)
-* [Dependencies](#dependencies)
 * [Instructions](#instructions)
 * [Project Structure](#project-structure)
 * [Usage](#usage)
@@ -14,13 +13,6 @@ Landing Page Project for Udacity's [Front End Developer Nanodegree](https://www.
 ## Description
 
 This project is a simple landing page that demonstrates the use of JavaScript to manipulate the DOM. It also showcases responsive design techniques using HTML and CSS.
-
-## Dependencies
-
-This project requires the following dependencies:
-
-* Google Fonts
-* Font Awesome
 
 ## Instructions
 
