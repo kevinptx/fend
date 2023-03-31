@@ -1,11 +1,9 @@
 const bodyParser = require('body-parser'); //dependency
 const cors = require('cors'); //dependency
+const express = require('express'); // (dependency) Require Express to run server and routes
 
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
-
-// Require Express to run server and routes
-const express = require('express');
 
 // Start up an instance of app
 const app = express();
