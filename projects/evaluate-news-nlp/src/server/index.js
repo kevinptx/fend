@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
     //res.sendFile('dist/index.html')
     res.sendFile(path.resolve('dist/index.html'));
     //res.sendFile(path.resolve('src/dist/views/index.html'));
-    //res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    //res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
     //res.sendFile(path.resolve('src/client/views/index.html'));
 })
 
