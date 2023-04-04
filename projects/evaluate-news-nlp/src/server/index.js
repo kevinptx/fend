@@ -1,23 +1,70 @@
-var path = require('path')
-const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+const dotenv = require('dotenv');
+dotenv.config();
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const fetch = require('node-fetch');
+const mockAPIResponse = require('./mockAPI.js');
 
-const app = express()
+const app = express();
 
-app.use(express.static('dist'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static('dist'));
 
-console.log(__dirname)
+// API Info
+
+// Base URL
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
+
+// API Key
+const apiKey = process.env.API_KEY;
+
+// Route for NLP API call
+app.post('/meaningcloud-api', async (req, res) => {
+    const userURL = req.body.url;
+    console.log(`User entered URL: ${userURL}`);
+
+    const apiURL = `${baseURL}?key=${apiKey}&url=${userURL}&lang=en`;
+
+    try {
+        const response = await fetch(apiURL);
+        const sentimentData = await response.json();
+        console.log("Logging sentiment data", sentimentData);
+
+        const projectData = {
+            score_tag: sentimentData.score_tag,
+            agreement: sentimentData.agreement,
+            subjectivity: sentimentData.subjectivity,
+            confidence: sentimentData.confidence,
+            irony: sentimentData.irony
+        }
+        res.send(projectData);
+    } catch (error) {
+        console.log('Error occurred', error);
+        res.status(500).send({ error: error.message });
+    }
+});
+
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('dist/index.html'));
+    //res.sendFile(path.resolve('src/dist/views/index.html'));
+    //res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    //res.sendFile(path.resolve('src/client/views/index.html'));
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
+app.listen(8080, function () { // starts the server
+    console.log('Server listening on port 8080!')
+});
 
+// Test route
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
+    res.send(mockAPIResponse);
+});
+
+console.log(`Your API key is ${process.env.API_KEY}`);

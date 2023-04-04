@@ -1,16 +1,45 @@
-function handleSubmit(event) {
-    event.preventDefault()
-
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+async function handleSubmit(event) {
+    event.preventDefault();
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+
+    let urlInput = document.getElementById('url').value
+
+    if (Client.isUrlValid(urlInput)) {
+        postData('http://localhost:8080/meaningcloud-api', { url: urlInput })
+            .then(function (result) {
+                Client.updateUI(result, {
+                    score_tag: document.getElementById('score_tag'),
+                    agreement: document.getElementById('agreement'),
+                    subjectivity: document.getElementById('subjectivity'),
+                    confidence: document.getElementById('confidence'),
+                    irony: document.getElementById('irony')
+                });
+            });
+    } else {
+        alert("URL provided is invalid.");
+    }
 }
+
+const postData = async (url = "", data = {}) => {
+    console.log('Analyzing', data);
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+
+    try {
+        const newData = await response.json();
+        console.log('Data Received:', newData)
+        return newData;
+    } catch (error) {
+        console.log('error', error);
+    }
+};
 
 export { handleSubmit }
