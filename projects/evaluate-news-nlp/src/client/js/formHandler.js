@@ -6,7 +6,8 @@ async function handleSubmit(event) {
     let urlInput = document.getElementById('url').value
 
     if (Client.isUrlValid(urlInput)) {
-        postData('http://localhost:8080/meaningcloud-api', { url: urlInput })
+        //Reference: https://knowledge.udacity.com/questions/641239 & https://knowledge.udacity.com/questions/642781
+        postData('http://localhost:8080/clientdataUrl', { url: urlInput })
             .then(function (result) {
                 Client.updateUI(result, {
                     score_tag: document.getElementById('score_tag'),

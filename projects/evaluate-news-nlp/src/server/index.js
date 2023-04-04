@@ -23,7 +23,8 @@ const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 const apiKey = process.env.API_KEY;
 
 // Route for NLP API call
-app.post('/meaningcloud-api', async (req, res) => {
+// Reference: https://knowledge.udacity.com/questions/641239 & https://knowledge.udacity.com/questions/642781
+app.post('/clientdataUrl', async (req, res) => {
     const urlInput = req.body.url;
     console.log(`User entered URL: ${userURL}`);
 
