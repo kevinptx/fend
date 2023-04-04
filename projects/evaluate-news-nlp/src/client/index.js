@@ -22,3 +22,11 @@ export {
     isUrlValid,
     updateUI
 }
+
+
+window.addEventListener("DOMContentLoaded", (e) => {
+    // get reference to the form elemet
+    const form = document.getElementById("form");
+    // Add submit event listener on this form
+    form.addEventListener("submit", handleSubmit);
+});

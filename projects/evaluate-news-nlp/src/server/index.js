@@ -24,10 +24,10 @@ const apiKey = process.env.API_KEY;
 
 // Route for NLP API call
 app.post('/meaningcloud-api', async (req, res) => {
-    const userURL = req.body.url;
+    const urlInput = req.body.url;
     console.log(`User entered URL: ${userURL}`);
 
-    const apiURL = `${baseURL}?key=${apiKey}&url=${userURL}&lang=en`;
+    const apiURL = `${baseURL}?key=${apiKey}&url=${urlInput}&lang=en`;
 
     try {
         const response = await fetch(apiURL);
@@ -50,8 +50,8 @@ app.post('/meaningcloud-api', async (req, res) => {
 
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('dist/index.html'));
+    //res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('dist/index.html'));
     //res.sendFile(path.resolve('src/dist/views/index.html'));
     //res.sendFile(path.join(__dirname, 'dist', 'index.html'));
     //res.sendFile(path.resolve('src/client/views/index.html'));
