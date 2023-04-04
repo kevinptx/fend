@@ -27,27 +27,34 @@ const apiKey = process.env.API_KEY;
 app.post('/clientdataUrl', async (req, res) => {
     const urlInput = req.body.url;
     console.log(`User entered URL: ${userURL}`);
-
-    const apiURL = `${baseURL}?key=${apiKey}&url=${urlInput}&lang=en`;
-
     try {
-        const response = await fetch(apiURL);
-        const sentimentData = await response.json();
-        console.log("Logging sentiment data", sentimentData);
-
-        const projectData = {
-            score_tag: sentimentData.score_tag,
-            agreement: sentimentData.agreement,
-            subjectivity: sentimentData.subjectivity,
-            confidence: sentimentData.confidence,
-            irony: sentimentData.irony
-        }
+        const projectData = await fetchDataFromAPI(urlInput);
         res.send(projectData);
     } catch (error) {
         console.log('Error occurred', error);
         res.status(500).send({ error: error.message });
     }
 });
+
+// Separate function to fetch data from the Meaning Cloud API
+const fetchDataFromAPI = async (urlInput) => {
+    const apiURL = `${baseURL}?key=${apiKey}&url=${urlInput}&lang=en`;
+    try {
+        const response = await fetch(apiURL);
+        const sentimentData = await response.json();
+        console.log("Logging sentiment data", sentimentData);
+        return {
+            score_tag: sentimentData.score_tag,
+            agreement: sentimentData.agreement,
+            subjectivity: sentimentData.subjectivity,
+            confidence: sentimentData.confidence,
+            irony: sentimentData.irony
+        };
+    } catch (error) {
+        console.log('Error occurred', error);
+        throw error;
+    }
+};
 
 
 app.get('/', function (req, res) {
