@@ -7,7 +7,7 @@ async function handleSubmit(event) {
 
     if (Client.isUrlValid(urlInput)) {
         //Reference: https://knowledge.udacity.com/questions/641239 & https://knowledge.udacity.com/questions/642781
-        postData('http://localhost:8080/clientdataUrl', { url: urlInput })
+        Client.postData('http://localhost:8080/clientdataUrl', { url: urlInput })
             .then(function (result) {
                 Client.updateUI(result, {
                     score_tag: document.getElementById('score_tag'),
@@ -22,25 +22,25 @@ async function handleSubmit(event) {
     }
 }
 
-const postData = async (url = "", data = {}) => {
-    console.log('Analyzing', data);
-    const response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    });
+// const postData = async (url = "", data = {}) => {
+//     console.log('Analyzing', data);
+//     const response = await fetch(url, {
+//         method: 'POST',
+//         credentials: 'same-origin',
+//         mode: 'cors',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data)
+//     });
 
-    try {
-        const newData = await response.json();
-        console.log('Data Received:', newData)
-        return newData;
-    } catch (error) {
-        console.log('error', error);
-    }
-};
+//     try {
+//         const newData = await response.json();
+//         console.log('Data Received:', newData)
+//         return newData;
+//     } catch (error) {
+//         console.log('error', error);
+//     }
+// };
 
 export { handleSubmit }
