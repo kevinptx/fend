@@ -26,7 +26,7 @@ const apiKey = process.env.API_KEY;
 // Reference: https://knowledge.udacity.com/questions/641239 & https://knowledge.udacity.com/questions/642781
 app.post('/clientdataUrl', async (req, res) => {
     const urlInput = req.body.url;
-    console.log(`User entered URL: ${userURL}`);
+    console.log(`User entered URL: ${urlInput}`);
     try {
         const projectData = await fetchDataFromAPI(urlInput);
         res.send(projectData);
