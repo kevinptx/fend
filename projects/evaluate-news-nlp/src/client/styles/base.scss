@@ -2,6 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: Arial, sans-serif;
+    /* default font */
+
 }
 
 main {
@@ -11,4 +14,11 @@ main {
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+
+@media only screen and (max-width: 600px) {
+    section {
+        margin: 30px auto;
+        /* reduce margin on smaller screens */
+    }
 }

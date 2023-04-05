@@ -1,6 +1,26 @@
+$primaryColor: #214e7b;
+$secondaryColor: #d8d8d8;
+
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1.5rem;
+    padding: 0.5rem;
+    background-color: $secondaryColor;
+    color: $primaryColor;
+}
+
+.fab {
+    font-size: 2.1875rem;
+    margin-right: 5px;
+}
+
+a {
+    color: $primaryColor;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
