@@ -7,22 +7,22 @@
         margin-bottom: 20px;
     }
 
-    .result-item {
+    .form-result-item {
         display: flex;
         align-items: center;
         margin-bottom: 15px;
+        font-size: 1.2rem;
 
         .result-label {
             display: inline-block;
             width: 120px;
             font-weight: bold;
-            font-size: 1.2rem;
             margin-right: 15px;
         }
 
         .result-value {
             font-weight: bold;
-            font-size: 1.2rem;
+            color: inherit;
         }
     }
 
