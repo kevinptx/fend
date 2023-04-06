@@ -16,8 +16,8 @@ console.log(handleSubmit);
 console.log(isUrlValid);
 console.log(postData);
 
-alert("I EXIST")
-console.log("CHANGE!!");
+// alert("I EXIST")
+// console.log("CHANGE!!");
 
 export {
     handleSubmit,
